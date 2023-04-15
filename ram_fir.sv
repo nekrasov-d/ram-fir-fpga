@@ -41,7 +41,7 @@ always_ff @( posedge clk_i )
     case( state )
       INIT_S       : state <= WAIT_START_S;
       WAIT_START_S : state <= sample_tick_i ? RUN_S : WAIT_START_S;
-      RUN_S        : state <= ( cnt == '1 ) ? LAST_OP_S : RUN_S;
+      RUN_S        : state <= ( cnt == LEN ) ? LAST_OP_S : RUN_S;
       LAST_OP_S    : state <= WAIT_START_S;
     endcase
 
